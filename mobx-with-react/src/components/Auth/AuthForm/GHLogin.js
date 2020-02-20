@@ -23,19 +23,19 @@ class GHLogin extends Component {
 
   render() {
     const onSuccess = res => {
-      console.log(res);
+      //console.log(res);
     };
     const onFailure = res => {
-      console.log("err " + res);
+      //console.log("err " + res);
     };
     return (
       <Container>
-        <GitHubLogin
-          clientId="55cfdf15046620ea9418"
+        <Github
+          buttonText="Github 로그인"
           onSuccess={onSuccess}
           onFailure={onFailure}
+          onClick='disabled'
         />
-        ,
       </Container>
     );
   }

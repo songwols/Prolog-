@@ -21,7 +21,6 @@ class Project extends Component {
     postStore.loadPosts(
       jwtDecode(window.sessionStorage.getItem("jwt")).sub * 1
     );
-    console.log(postStore.returnItems);
   }
 
   render() {

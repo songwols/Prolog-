@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 
 import GLogin from "./GLogin";
-import GHLogin from "./GHLogin";
 import KLogin from "./KLogin";
 
 @inject("authStore")
@@ -23,11 +22,10 @@ class AuthForm extends React.Component {
   };
 
   render() {
-    const { values, inProgress } = this.props.authStore;
-    const { accessToken, refreshToken, provider } = values;
+    const { values } = this.props.authStore;
     return (
       <LineBox>
-        <GHLogin>Github 로그인</GHLogin>
+        <Container>Github 로그인</Container>
         <GLogin></GLogin>
         <KLogin></KLogin>
         <hr />
@@ -38,6 +36,17 @@ class AuthForm extends React.Component {
     );
   }
 }
+
+const Container = styled.div`
+  line-height: 4rem;
+  width: 100%;
+  height: 4rem;
+  background-color: #e6e6e6;
+  display: inline-block;
+  margin-top: 3rem;
+  color: black;
+  cursor: pointer;
+`;
 
 const LineBox = styled.div`
   padding-left: 7%;
