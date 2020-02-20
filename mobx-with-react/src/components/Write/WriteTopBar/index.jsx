@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { SketchPicker } from "react-color";
 import { ArrowBackIcon, PrimitiveDotIcon } from "../../../styles/iconStyle.js";
 import { inject, observer } from "mobx-react";
+import axios from "axios";
 
 const blackColor = "#a6a6a6";
 const redColor = "#ff9999";
@@ -17,11 +18,14 @@ const color8 = "#536B82";
 const WriteTopBar = ({
   title,
   coverColor,
+  coverImage,
   changeTitle,
   changeCoverColor,
+  changeCoverImage,
   postCode
 }) => {
   const [color, setColor] = useState(coverColor);
+  const [backgroundImage, setBackgroundImage] = useState(coverImage);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const onCircleClick = color => {
     setColor(color);
@@ -48,7 +52,7 @@ const WriteTopBar = ({
 
   const handleChange = color => {
     setColor(color.hex);
-    changeCoverColor(color.hex)
+    changeCoverColor(color.hex);
   };
 
   const popover = {
@@ -67,8 +71,36 @@ const WriteTopBar = ({
     left: "0px"
   };
 
+  const onChangeHandler = event => {
+    onFileTransmit(event.target.files[0]);
+  };
+
+  const onFileTransmit = file => {
+    const data = new FormData();
+    if (file) {
+      data.append("upload", file);
+      axios
+        .post("http://localhost:3000/v1/file", data, {
+          headers: { "X-AUTH-TOKEN": window.sessionStorage.getItem("jwt") }
+        })
+        .then(res => {
+          if (res.data.uploaded === true) {
+            setBackgroundImage(res.data.url);
+            changeCoverImage(res.data.url);
+          } else {
+            alert("이미지 업로드에 실패하였습니다.");
+          }
+        });
+    }
+  };
+
+  const onClickHandler = () => {
+    const idReference = document.getElementById("fileupload");
+    idReference.click();
+  };
+
   return (
-    <WriteTopBarLayout color={coverColor}>
+    <WriteTopBarLayout color={color} image={backgroundImage}>
       {/* TODO 뒤로가기가 되어야함. 메인으로 가는게 아니라 */}
       <Link to={"/"} style={{ textDecoration: "none" }}>
         <ArrowBackIcon></ArrowBackIcon>
@@ -126,6 +158,10 @@ const WriteTopBar = ({
           <PrimitiveDotIcon color={"#555555"} onClick={color10Click} />
         </ColorDiv>
       </ColorDots>
+      <div style={{float: "right", margin:"2em"}}>
+        <input type="file" id="fileupload" onChange={onChangeHandler} style={{display:"none"}} />
+        <UploadBtn onClick={onClickHandler}>이미지</UploadBtn>
+      </div>
     </WriteTopBarLayout>
   );
 };
@@ -176,12 +212,30 @@ const WriteTopBarLayout = styled.div`
   border-width: 1px; */
   position: relative;
   background-color: ${props => props.color};
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 `;
 
+const UploadBtn = styled.div`
+  border-radius: 5px;
+  border-color: black;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  height: 30px;
+  width: 60px;
+  background-color: white;
+  float: right;
+  margin-top: 1%;
+  margin-right: 1%;
+  text-align: center;
+  padding-top: 3px;
+`;
+
 export default inject(({ postStore, authStore }) => ({
-  values: authStore.values
 }))(observer(WriteTopBar));

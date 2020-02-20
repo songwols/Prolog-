@@ -25,7 +25,7 @@ class PostWritePage extends Component {
   componentWillMount() {
     if (this.props.match.params.postCode) {
       this.props.editorStore.setPostId(this.props.match.params.postCode);
-      this.props.editorStore.loadInitialData().then(res => console.log(res));
+      this.props.editorStore.loadInitialData().then();
     }
   }
 
@@ -44,7 +44,9 @@ class PostWritePage extends Component {
 
   changeCoverColor = color => this.props.editorStore.setCoverColor(color);
 
-  changeCoverImage = src => this.props.editorStore.setCoverImage(src);
+  changeCoverImage = src =>{
+    this.props.editorStore.setCoverImage(src)
+  } ;
   changeDescription = e =>
     this.props.editorStore.setDescription(e.target.value);
   changeBody = e => this.props.editorStore.setBody(e.target.value);

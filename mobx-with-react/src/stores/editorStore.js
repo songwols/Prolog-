@@ -64,7 +64,7 @@ export default class EditorStore {
   }
 
   @action setCoverImage(coverImage) {
-    this.coverIamge = coverImage;
+    this.coverImage = coverImage;
   }
 
   @action setBody(body) {
