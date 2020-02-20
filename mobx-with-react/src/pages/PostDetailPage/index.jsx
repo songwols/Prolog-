@@ -36,7 +36,7 @@ class PostDetailPage extends Component {
     const id = this.props.match.params.id;
     this.props.postStore.getPost(id);
     const post = this.props.postStore.detailPost;
-
+    
     if (!this.props.postStore.detailPost)
       return <h1>Post가 없습니다. 에러처리</h1>;
 
