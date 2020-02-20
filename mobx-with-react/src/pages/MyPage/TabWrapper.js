@@ -16,12 +16,11 @@ class TabWrapper extends Component {
   componentDidMount() {
     const userid = this.props.userid;
     const { postStore } = this.props;
+
     postStore.loadPosts(userid).then(res => {
-      if (res.status === 200){
-        this.setState({
-          items: postStore.postItems
-        });
-      }
+      this.setState({
+        items: postStore.postItems
+      });
     });
   }
 
@@ -60,6 +59,7 @@ class TabWrapper extends Component {
         endMessage={<h4></h4>}
       >
         <TabWrapperLayout>
+          {console.log(items)}
           {items.map((item, index) => (
             <PostCard key={index} post={item} />
           ))}
