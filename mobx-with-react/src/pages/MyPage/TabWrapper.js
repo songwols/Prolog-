@@ -14,7 +14,7 @@ class TabWrapper extends Component {
   };
 
   componentDidMount() {
-    const userid = this.props.userid;
+    let userid = this.props.userid;
     const { postStore } = this.props;
 
     postStore.loadPosts(userid).then(res => {

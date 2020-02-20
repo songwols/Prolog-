@@ -9,13 +9,11 @@ export default class PostStore {
   @observable predicate = {};
 
   @computed get length() {
-    if (this.postItems) return this.postItems.length;
-    else return 0;
+    return this.postItems.length;
   }
 
   @computed get returnLength() {
-    if (this.returnItems) return this.returnItems.length;
-    else return 0;
+    return this.returnItems.length;
   }
 
   @computed get posts() {
@@ -53,7 +51,8 @@ export default class PostStore {
     //TODO
     if (userid === -1) {
       return agent.Posts.all()
-        .then(res => this.setPostItems(res.data.list))
+        .then(res => {
+          this.setPostItems(res.data.list)})
         .catch(err => console.log(err))
         .finally(
           action(() => {
