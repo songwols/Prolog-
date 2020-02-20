@@ -33,6 +33,7 @@ class PostList extends Component {
 
   render() {
     const { items, hasMoreItems } = this.state;
+    const returns = this.props.postStore.returnItems
 
     return (
       <InfiniteScroll
@@ -53,9 +54,10 @@ class PostList extends Component {
         endMessage={<h4>End</h4>}
       >
         <GridDiv>
-          {this.props.postStore.returnItems.map((item, index) => (
+          { returns? (returns.map((item, index) => (
             <PostCard key={index} post={item} />
-          ))}
+          ))) : (<></>)}
+          
         </GridDiv>
       </InfiniteScroll>
     );
