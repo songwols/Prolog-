@@ -57,7 +57,7 @@ export default class EditorHelper extends Component {
           <span>InsertImage url</span>
           <input placeholder="http://" onChange={this.imageUrlChange}></input>
         </Popup>
-        <Popup
+        {/* <Popup
           onClose={this.onClickInsertMedia}
           trigger={open => (
             <VideoIcon>Trigger - {open ? "Opened" : "Closed"}</VideoIcon>
@@ -67,7 +67,7 @@ export default class EditorHelper extends Component {
         >
           <span>InsertMedia url</span>
           <input placeholder="http://" onChange={this.mediaUrlChange}></input>
-        </Popup>
+        </Popup> */}
       </EditorHelperLayout>
     );
   }
