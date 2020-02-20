@@ -21,7 +21,6 @@ const App = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/post/:id" component={PostDetailPage} />
         <Route path="/mypage/:msrl" component={MyPage} />
-        <Route path="/mypage" component={MyPage} />
         <Route path="/write/:postCode" component={PostWritePage} />
         <Route path="/write" component={PostWritePage} />
         <Route path="/searchpage" component={SearchPage} />
