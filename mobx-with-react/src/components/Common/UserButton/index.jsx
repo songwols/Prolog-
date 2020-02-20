@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { toJS } from "mobx";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";

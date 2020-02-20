@@ -49,11 +49,12 @@ class UserProfile extends Component {
     this.EmailClick = this.EmailClick.bind(this);
   }
   componentDidMount() {
-    agent.Auth.getUserInfo(this.props.authStore.token).then(res => {
-      this.props.authStore.setName(res.data.data.name);
-      this.props.authStore.setEmail(res.data.data.email);
-      this.props.authStore.setIntro(res.data.data.greeting);
-    });
+    if (window.sessionStorage.getItem("jwt"))
+      agent.Auth.getUserInfo(this.props.authStore.token).then(res => {
+        this.props.authStore.setName(res.data.data.name);
+        this.props.authStore.setEmail(res.data.data.email);
+        this.props.authStore.setIntro(res.data.data.greeting);
+      });
   }
 
   handleChange = e => {
@@ -208,7 +209,7 @@ class UserProfile extends Component {
       <UserProfileLayout>
         <Link to={"/mypage"} style={{ textDecoration: "none" }}>
           <Img>
-            {picture ? (
+            {this.Apicture ? (
               this.uid == this.myuid ? (
                 <ProfileImg src={picture}></ProfileImg>
               ) : (
@@ -263,19 +264,9 @@ const DefaultImage = styled.img`
   height: 10rem;
   object-fit: cover;
   border-radius: 50%;
-
-  /* display: flex;
-  background-color: ivory;
-  justify-content: center;
-  text-align: center;
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 50%; */
 `;
 
 const UserInfo = styled.div`
-  /* flex-direction: column; */
   margin-left: 2rem;
   width: 100%-2rem;
   height: 100%-2rem;
@@ -314,7 +305,6 @@ const UpdateIntro = styled.div`
 const InputName = styled.textarea`
   resize: none;
   height: 1rem;
-  margin-top: ;
 `;
 
 const InputEmail = styled.textarea`

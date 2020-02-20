@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import TagEditor from "react-tageditor";
-import "react-tageditor/dist/style/default.css"; //css바꾸고 싶으면 저기서 바꾸거나 가져와서 바꾸면 됨.
+import "react-tageditor/dist/style/default.css";
 
 class WriteTags extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class WriteTags extends Component {
         <TagEditor
           ref="tagEditor"
           tags={this.state.tags}
-          delimiters={[13, ","]} //13은 enter
+          delimiters={[13, ","]}
           placeholder="태그를 입력해주세요."
           onChange={this.handleTagsChange}
         />
@@ -32,8 +32,6 @@ class WriteTags extends Component {
   }
 }
 
-const WriteTagLayout = styled.div`
-  /* align-items: "center"; */
-`;
+const WriteTagLayout = styled.div``;
 
 export default WriteTags;

@@ -61,12 +61,6 @@ class PostList extends Component {
     );
   }
 }
-// decorate(PostList, {
-//   postItems: observable,
-//   sortByViews: action,
-//   sortByIds: action,
-//   sortByAuthors: action
-// });
 export default PostList;
 
 const GridDiv = styled.div`
@@ -77,7 +71,6 @@ const GridDiv = styled.div`
   z-index: 1;
 
   @media (max-width: 1024px) {
-    /*태블릿?*/
     grid-template-columns: repeat(auto-fit, 50%);
     grid-template-rows: repeat(auto-fit, 1fr);
   }

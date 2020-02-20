@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SearchAlt2 } from "styled-icons/boxicons-regular/SearchAlt2";
-import UserButton from "../Common/UserButton"
-import { inject, observer } from "mobx-react";
+import UserButton from "../Common/UserButton";
 
 export const MSearchIcon = styled(SearchAlt2)`
   width: 20%;
@@ -19,16 +18,11 @@ export const MSearchIcon = styled(SearchAlt2)`
 `;
 
 const TopBar = () => {
-  const [user, setUser] = useState('10');
+  const [user, setUser] = useState("10");
 
-  const login = ({ email, password }) => setUser({ email: 'kim@test.com', password: '123', name: 'Kim' });
-  // signIn({ email, password })
-  const logout = () => setUser(null);
   return (
     <TopBarLayout>
-    
-        <UserButton></UserButton>
-        
+      <UserButton></UserButton>
     </TopBarLayout>
   );
 };
@@ -39,7 +33,6 @@ const TopBarLayout = styled.div`
   align-items: flex-end;
   width: 100%;
   text-align: center;
-  /* will be layout css code  */
 `;
 
 const MLogo = styled.div`

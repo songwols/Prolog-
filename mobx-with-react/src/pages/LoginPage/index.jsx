@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import AuthForm from '../../components/Auth/AuthForm'
+import AuthForm from "../../components/Auth/AuthForm";
 
 const LogInPage = () => {
- 
   return (
     <LoginLayout>
       <LeftDiv>
@@ -18,7 +15,7 @@ const LogInPage = () => {
         </TextBox>
       </LeftDiv>
       <RightDiv>
-        <AuthForm/>
+        <AuthForm />
       </RightDiv>
     </LoginLayout>
   );
@@ -37,17 +34,17 @@ const LoginLayout = styled.div`
     grid-template-areas: "content";
   }
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 30% 70%;
-    grid-template-areas: "nav"
-                          "content";
+    grid-template-areas:
+      "nav"
+      "content";
   }
 `;
 
 const LeftDiv = styled.div`
-  /* width: 50vw; */
   height: 100%;
   background-color: #1a3365;
   float: left;
@@ -55,9 +52,8 @@ const LeftDiv = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-  
-  @media (max-width: 1024px){
-    /* display: none; */
+
+  @media (max-width: 1024px) {
     height: 100%;
   }
 `;
@@ -74,7 +70,7 @@ const Logo = styled.div`
   display: block;
   position: relative;
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     margin-top: 3rem;
   }
 `;
@@ -86,7 +82,6 @@ const TextBox = styled.div`
   margin-right: 15%;
   margin-left: 13%;
   font-size: 1.3rem;
-  
 `;
 
 const RightDiv = styled.div`
@@ -100,7 +95,7 @@ const RightDiv = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     width: 100vw;
     height: 100%;
   }

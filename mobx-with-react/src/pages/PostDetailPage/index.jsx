@@ -8,7 +8,6 @@ import jwtDecode from "jwt-decode";
 import UserButton from "../../components/Common/UserButton";
 
 @inject("postStore", "userStore", "commentStore", "authStore")
-// @withRouter
 @observer
 class PostDetailPage extends Component {
   componentDidMount() {

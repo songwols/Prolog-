@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction, toJS } from "mobx";
+import { observable, action, reaction } from "mobx";
 import jwtDecode from "jwt-decode";
 import agent from "../agent";
 
@@ -12,7 +12,7 @@ export default class AuthStore {
     email: "이메일을 입력해주세요.",
     name: "",
     intro: "소개를 입력해주세요.",
-    picture:""
+    picture: ""
   };
   @observable user_detail = {
     provider: undefined,
@@ -32,7 +32,6 @@ export default class AuthStore {
     this.root = root;
     if (this.token) {
       this.user_info = jwtDecode(this.token).userInfo;
-      //this.getUserDetail(this.token);
     }
 
     reaction(
@@ -119,7 +118,7 @@ export default class AuthStore {
 
   @action setAccessToken(token) {
     this.values.accessToken = token;
-   }
+  }
   @action setRefreshToken(token) {
     this.values.refreshToken = token;
   }
@@ -158,29 +157,27 @@ export default class AuthStore {
   @action login() {
     this.inProgress = true;
     this.errors = undefined;
-    return (
-      agent.Auth.login(
-        this.values.accessToken,
-        this.values.refreshToken,
-        this.values.provider
-      )
-        .then(res => {
-          this.setToken(res.data.data);
+    return agent.Auth.login(
+      this.values.accessToken,
+      this.values.refreshToken,
+      this.values.provider
+    )
+      .then(res => {
+        this.setToken(res.data.data);
+      })
+
+      .catch(
+        action(err => {
+          this.errors =
+            err.response && err.response.body && err.response.body.errors;
+          throw err;
         })
-        // .then(() => this.root.userStore.pullUser()) //login 성공한 유저정보를 불러온다.
-        .catch(
-          action(err => {
-            this.errors =
-              err.response && err.response.body && err.response.body.errors;
-            throw err;
-          })
-        )
-        .then(
-          action(() => {
-            this.inProgress = false;
-          })
-        )
-    );
+      )
+      .then(
+        action(() => {
+          this.inProgress = false;
+        })
+      );
   }
   @action register() {
     this.inProgress = true;
@@ -209,11 +206,11 @@ export default class AuthStore {
     agent.Auth.getUserInfo(jwt);
   }
 
-  @action 
-   async getOtherDetail(msrl){
-     this.nuser_detail=await agent.Auth.getOtherInfo(msrl);
+  @action
+  async getOtherDetail(msrl) {
+    this.nuser_detail = await agent.Auth.getOtherInfo(msrl);
 
-      return 
+    return;
   }
 
   @action logout() {
@@ -225,10 +222,10 @@ export default class AuthStore {
     return this.name;
   }
 
-  @action authenticatedUserId(){
-    if (this.token){
-      const currentId = jwtDecode(this.token).sub
-      return currentId
+  @action authenticatedUserId() {
+    if (this.token) {
+      const currentId = jwtDecode(this.token).sub;
+      return currentId;
     }
   }
 }

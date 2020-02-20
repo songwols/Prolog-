@@ -4,9 +4,8 @@ import Popup from "reactjs-popup";
 
 import {
   ImageIcon,
-  // ImageAddIcon,
   VideoIcon,
-  HorizontalLineIcon,
+  HorizontalLineIcon
 } from "../../../styles/iconStyle.js";
 
 export default class EditorHelper extends Component {
@@ -24,7 +23,6 @@ export default class EditorHelper extends Component {
   };
 
   onClickInsertMedia = () => {
-    //TODO: 동영상 주소가 맞는지 처리해주는 로직
     if (this.state.mediaUrl !== "") {
       this.props.editor.execute("mediaEmbed", this.state.mediaUrl);
       this.setState({ mediaUrl: "" });
@@ -32,27 +30,11 @@ export default class EditorHelper extends Component {
   };
 
   onClickInsertImage = () => {
-    //TODO: 이미지 주소가 맞는지 처리해주는 로직
     if (this.state.mediaUrl !== "") {
       this.props.editor.execute("imageInsert", { source: this.state.imageUrl });
       this.setState({ imageUrl: "" });
     }
-    // multi
-    //   editor.execute( 'imageInsert', {
-    //     source:  [
-    //         'path/to/image.jpg',
-    //         'path/to/other-image.jpg'
-    //     ]
-    // } );
   };
-
-  // onClickImageUpload = () => {
-  //   //this.props.editor.execute(( 'imageUpload', new ImageUploadCommand(this.props.editor  ) ));
-  //   //console.log(Array.from(this.props.editor.ui.componentFactory.names()));
-  //   //console.log(this.props.editor.plugins);
-  //   //console.log(this.props.editor.plugins.get("ImageUpload"));
-  //   //   console.log(this.props.editor.editing)
-  // };
 
   onClickHorizontalLine = () => {
     this.props.editor.execute("horizontalLine");
@@ -61,7 +43,6 @@ export default class EditorHelper extends Component {
   render() {
     return (
       <EditorHelperLayout>
-        {/* <ImageAddIcon onClick={this.onClickImageUpload}/> */}
         <HorizontalLineIcon onClick={this.onClickHorizontalLine} />
         <Popup
           onClose={this.onClickInsertImage}

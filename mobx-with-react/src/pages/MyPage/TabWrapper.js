@@ -21,7 +21,6 @@ class TabWrapper extends Component {
         items: postStore.postItems
       });
     });
-    //postStore.getItems(0, 2);
   }
 
   fetchMoreData = () => {

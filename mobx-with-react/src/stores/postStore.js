@@ -1,7 +1,5 @@
 import agent from "../agent";
 import { observable, action, computed } from "mobx";
-import { RouteComponentProps } from "react-router-dom";
-import { getUnixTime } from "date-fns";
 
 // imageUrl, Title, category, text, likes, comments, created_at, updated_at , author
 export default class PostStore {

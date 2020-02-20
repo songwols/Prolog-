@@ -27,8 +27,6 @@ const WriteTopBar = ({
     setColor(color);
     changeCoverColor(color);
   };
-  //왜 직접 <PrimitiveDotIcon style={{color: "#a6a6a6"}} onClick={onCircleClick(blackColor)}></PrimitiveDotIcon>
-  //같은 식으로 짜면 무한대 리렌더가 발생하는걸까?
   const BlackClick = () => onCircleClick(blackColor);
   const RedClick = () => onCircleClick(redColor);
   const GreenClick = () => onCircleClick(greenColor);
@@ -48,16 +46,12 @@ const WriteTopBar = ({
 
   const handleChange = color => {
     setColor(color.hex);
-    changeCoverColor(color.hex)
+    changeCoverColor(color.hex);
   };
 
   const popover = {
     position: "relative",
     marginRight: "200px"
-    //zIndex: '10',
-    // :hover {
-    //   opacity: 0%;
-    // }
   };
   const cover = {
     position: "fixed",
@@ -69,7 +63,6 @@ const WriteTopBar = ({
 
   return (
     <WriteTopBarLayout color={coverColor}>
-      {/* TODO 뒤로가기가 되어야함. 메인으로 가는게 아니라 */}
       <Link to={"/"} style={{ textDecoration: "none" }}>
         <ArrowBackIcon></ArrowBackIcon>
       </Link>
@@ -163,17 +156,13 @@ const HeaderInput = styled.input`
   border-color: transparent;
   background: inherit;
   color: white;
-  /* background: ${props => props.color}; */
-  :focus{
-      outline: none;
+  :focus {
+    outline: none;
   }
 `;
 
 const WriteTopBarLayout = styled.div`
   height: 20rem;
-  /* border-bottom-style: solid;
-  border-color: gray;
-  border-width: 1px; */
   position: relative;
   background-color: ${props => props.color};
   -moz-transition: all 0.2s ease-in;

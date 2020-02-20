@@ -10,14 +10,12 @@ const PostActions = props => {
     return (
       <div>
         <Span>
-          <Link
-            // 수정하러가야함. 새로운 link 현재는 없음 TODO
-            to={`/editor/${post.id}`} style={{ textDecoration: "none" }} >
-            수정 
+          <Link to={`/editor/${post.id}`} style={{ textDecoration: "none" }}>
+            수정
           </Link>
           &nbsp;
-          <Link to={`/editor/${post.id}`} style={{ textDecoration: "none" }} >
-             삭제
+          <Link to={`/editor/${post.id}`} style={{ textDecoration: "none" }}>
+            삭제
           </Link>
         </Span>
       </div>
@@ -29,6 +27,6 @@ const PostActions = props => {
 
 const Span = styled.div`
   text-align: right;
-`
+`;
 
 export default PostActions;

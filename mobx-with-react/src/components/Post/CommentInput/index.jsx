@@ -1,14 +1,14 @@
-import React, {Component } from 'react';
-import { inject } from 'mobx-react';
+import React, { Component } from "react";
+import { inject } from "mobx-react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-@inject('commentStore')
+@inject("commentStore")
 class CommentInput extends Component {
   constructor() {
     super();
     this.state = {
-      body: ''
+      body: ""
     };
 
     //커멘트 내용 입력 이벤트
@@ -18,10 +18,8 @@ class CommentInput extends Component {
 
     //댓글 저장 이벤트
     this.createComment = e => {
-        //입력버튼 누르기 전엔 실행하지 않는다.
       e.preventDefault();
-      this.props.commentStore.createComment({ body: this.state.body })
-        //.then(() => this.setState({ body: '' }));
+      this.props.commentStore.createComment({ body: this.state.body });
     };
   }
 
@@ -30,7 +28,8 @@ class CommentInput extends Component {
     return (
       <form className="card comment-form" onSubmit={this.createComment}>
         <DIV className="card-block">
-          <TextArea className="form-control"
+          <TextArea
+            className="form-control"
             placeholder="댓글을 작성해주세요."
             value={this.state.body}
             disabled={isCreatingComment}
@@ -44,10 +43,7 @@ class CommentInput extends Component {
             className="comment-author-img"
             alt=""
           />
-          <CButton
-            className="btn btn-sm btn-primary"
-            type="submit"
-          >
+          <CButton className="btn btn-sm btn-primary" type="submit">
             댓글 작성하기
           </CButton>
         </div>
@@ -61,21 +57,21 @@ const DIV = styled.div`
   width: 98%;
   max-height: 30rem;
   overflow: hidden;
-`
+`;
 
 const TextArea = styled.textarea`
-    margin-top: 1rem;
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    resize: none;
-    color: #212529;
-    display: block;
-    line-height: 1.5;
-    height: 10rem;
+  margin-top: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  resize: none;
+  color: #212529;
+  display: block;
+  line-height: 1.5;
+  height: 10rem;
 `;
 
 const CButton = styled.button`

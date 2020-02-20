@@ -24,13 +24,11 @@ class NavSearch extends Component {
 
   render() {
     const SearchBtn = () => {
-      //alert(this.state.searchText);
       this.props.postStore.searchTitle(this.state.searchText);
       this.props.history.push("/");
       this.setState({
         searchText: ""
       });
-      //window.location.reload();
     };
     const Enterkey = () => {
       if (window.event.keyCode == 13) {
@@ -86,21 +84,5 @@ const InputBox = styled.input`
   margin-left: 0.5rem;
   color: inherit;
 `;
-
-// const NavSearchBtn = styled.input.attrs({
-
-//   value: "검색" /*search.png 넣고싶음...*/
-// })`
-//   background: #00aec9;
-//   color: white;
-//   cursor: pointer;
-//   margin-bottom: 0;
-//   width: 20%;
-//   height: 35px;
-//   border-color: transparent;
-//   box-shadow: 0px;
-//   text-align: center;
-//   font-size: 100%;
-// `;
 
 export default NavSearch;

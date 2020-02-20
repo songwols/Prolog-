@@ -2,15 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-build-balloon";
-// import * as BalloonEditor  from '../../../ckeditor5-build-balloon/build/ckeditor.js';
-//const BalloonEditor = require('../../../ckeditor5-build-balloon')
-//import BalloonEditor from '../../../ckeditor5-build-balloon/build/ckeditor.js'
 import "../../../styles/content-style.css";
 import EditorHelper from "../EditorHelper";
-// const aa = require('./build/ckeditor.js')
-{
-  /* <script src='../../../ckeditor5-build-balloon/build/ckeditor.js'></script> */
-}
 
 export default class WriteEditor extends Component {
   state = {
@@ -29,9 +22,9 @@ export default class WriteEditor extends Component {
   render() {
     let config = {
       simpleUpload: {
-      uploadUrl: 'http://localhost:3000/v1/file'
-    }
-  }
+        uploadUrl: "http://localhost:3000/v1/file"
+      }
+    };
 
     return (
       <>

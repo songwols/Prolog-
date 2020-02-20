@@ -1,11 +1,9 @@
 import { observable, action } from "mobx";
-import postStore from "./postStore";
 
 export default class EditorStore {
   constructor(root) {
     this.root = root;
   }
-  //임시
   @observable postList = [];
 
   @observable inProgress = false;

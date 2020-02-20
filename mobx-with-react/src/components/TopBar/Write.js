@@ -4,26 +4,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const PlusIcon = styled(Plus)`
-
   width: 60px;
   cursor: pointer;
   padding-top: 0.1rem;
   margin-right: 0.5rem;
   color: black;
-  :hover{
+  :hover {
     opacity: 0.5;
   }
 `;
 
 const Write = () => {
- 
-  // const PostClick = () => {
-  //   alert("Post를 눌렀어요!");
-  // };
-  const PortfolioClick = () => {
-    alert("Portfolio를 눌렀어요!");
-  };
-
   return (
     <WriteLayout>
       <PlusIcon></PlusIcon>
@@ -32,7 +23,7 @@ const Write = () => {
           <SelectMenu>Post</SelectMenu>
         </Link>
         <Link to={"/portfolio"} style={{ textDecoration: "none" }}>
-        <SelectMenu>Portfolio</SelectMenu>
+          <SelectMenu>Portfolio</SelectMenu>
         </Link>
       </SelectMenus>
     </WriteLayout>
@@ -44,7 +35,7 @@ const SelectMenus = styled.div`
   position: absolute;
   background-color: #f9f9f9;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
 const WriteLayout = styled.div`
@@ -61,7 +52,7 @@ const SelectMenu = styled.a`
   text-align: left;
   cursor: pointer;
   :hover {
-    background-color: #f1f1f1
+    background-color: #f1f1f1;
   }
 `;
 
