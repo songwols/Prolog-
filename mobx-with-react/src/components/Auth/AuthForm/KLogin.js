@@ -37,7 +37,7 @@ class KLogin extends Component {
         );
         this.props.authStore.setName(this.props.authStore.user_detail.name);
         this.props.authStore.setEmail(this.props.authStore.user_detail.email);
-        window.location.replace("http://localhost:3000/");
+        window.location.replace("http://i02a410.p.ssafy.io/");
       })
       .catch(err => {
         console.log("실패", err);

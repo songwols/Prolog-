@@ -74,7 +74,7 @@ const WriteTopBar = ({
     if (file) {
       data.append("upload", file);
       axios
-        .post("http://localhost:3000/v1/file", data, {
+        .post("http://i02a410.p.ssafy.io/v1/file", data, {
           headers: { "X-AUTH-TOKEN": window.sessionStorage.getItem("jwt") }
         })
         .then(res => {

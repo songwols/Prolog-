@@ -22,7 +22,7 @@ export default class WriteEditor extends Component {
   render() {
     let config = {
       simpleUpload: {
-        uploadUrl: "http://localhost:3000/v1/file"
+        uploadUrl: "http://i02a410.p.ssafy.io/v1/file"
       }
     };
 
