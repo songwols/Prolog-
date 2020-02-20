@@ -17,9 +17,11 @@ class TabWrapper extends Component {
     const userid = this.props.userid;
     const { postStore } = this.props;
     postStore.loadPosts(userid).then(res => {
-      this.setState({
-        items: postStore.postItems
-      });
+      if (res.status === 200){
+        this.setState({
+          items: postStore.postItems
+        });
+      }
     });
   }
 
