@@ -36,7 +36,7 @@ class PostList extends Component {
 
     return (
       <InfiniteScroll
-        dataLength={this.props.postStore.returnItems.length}
+        dataLength={this.props.postStore.returnLength}
         next={this.fetchMoreData}
         hasMore={hasMoreItems}
         loader={

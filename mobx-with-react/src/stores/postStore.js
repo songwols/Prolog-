@@ -9,7 +9,13 @@ export default class PostStore {
   @observable predicate = {};
 
   @computed get length() {
-    return this.postItems.length;
+    if (this.postItems) return this.postItems.length;
+    else return 0;
+  }
+
+  @computed get returnLength() {
+    if (this.returnItems) return this.returnItems.length;
+    else return 0;
   }
 
   @computed get posts() {
