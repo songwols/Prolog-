@@ -114,9 +114,9 @@ class UserProfile extends Component {
       <UpdateName>
         <UserName>
           Name:
-          {this.uid == myuid ? this.props.authStore.name : this.Aname}
+          {this.uid == this.myuid ? this.props.authStore.name : this.Aname}
         </UserName>
-        {this.uid == myuid ? (
+        {this.uid == this.myuid ? (
           <PencilIncon onClick={this.NameClick}></PencilIncon>
         ) : (
           ""
@@ -128,9 +128,9 @@ class UserProfile extends Component {
       <UpdateEmail>
         <UserEmail>
           Email:
-          {this.uid == myuid ? this.props.authStore.email : this.Aemail}
+          {this.uid == this.myuid ? this.props.authStore.email : this.Aemail}
         </UserEmail>
-        {this.uid == myuid ? (
+        {this.uid == this.myuid ? (
           <PencilIncon onClick={this.EmailClick}></PencilIncon>
         ) : (
           ""
@@ -142,9 +142,9 @@ class UserProfile extends Component {
       <UpdateIntro>
         <UserIntro>
           Intro:
-          {this.props.authStore.intro}
+          {this.uid == this.myuid ? this.props.authStore.intro : this.Aintro}
         </UserIntro>
-        {this.uid == myuid ? (
+        {this.uid == this.myuid ? (
           <PencilIncon onClick={this.IntroClick}></PencilIncon>
         ) : (
           ""
@@ -209,7 +209,7 @@ class UserProfile extends Component {
         <Link to={"/mypage"} style={{ textDecoration: "none" }}>
           <Img>
             {picture ? (
-              this.uid == myuid ? (
+              this.uid == this.myuid ? (
                 <ProfileImg src={picture}></ProfileImg>
               ) : (
                 <ProfileImg src={this.Apicture}></ProfileImg>
