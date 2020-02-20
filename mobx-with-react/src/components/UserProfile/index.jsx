@@ -49,12 +49,18 @@ class UserProfile extends Component {
     this.EmailClick = this.EmailClick.bind(this);
   }
   componentDidMount() {
-    if (window.sessionStorage.getItem("jwt"))
-      agent.Auth.getUserInfo(this.props.authStore.token).then(res => {
+    agent.Auth.get(this.uid).then(res => {
+      console.log(res)
         this.props.authStore.setName(res.data.data.name);
         this.props.authStore.setEmail(res.data.data.email);
         this.props.authStore.setIntro(res.data.data.greeting);
+        this.setState({
+          name: res.data.data.name,
+          email: res.data.data.email,
+          intro: res.data.data.greeting
+        })
       });
+    
   }
 
   handleChange = e => {
@@ -207,7 +213,7 @@ class UserProfile extends Component {
     });
     return (
       <UserProfileLayout>
-        <Link to={"/mypage"} style={{ textDecoration: "none" }}>
+        <Link to={`/portfolio/${this.uid}`} style={{ textDecoration: "none" }}>
           <Img>
             {this.Apicture ? (
               this.uid == this.myuid ? (
