@@ -36,7 +36,7 @@ class PostDetailPage extends Component {
     const id = this.props.match.params.id;
     this.props.postStore.getPost(id);
     const post = this.props.postStore.detailPost;
-    
+
     if (!this.props.postStore.detailPost)
       return <h1>Post가 없습니다. 에러처리</h1>;
 
@@ -69,10 +69,13 @@ class PostDetailPage extends Component {
           <PostContent>
             {post.coverImage ? (
               <>
-                <Coverimg src={post.coverImage}></Coverimg>
-                <Title>{post.title}</Title>
-                <Author>작성자 : {post.userName}</Author>
-                <WriteDate>작성날짜 : {date}</WriteDate>
+                <Coverimg
+                  color={post.coverColor}
+                  image={post.coverImage}
+                ></Coverimg>
+                <UTitle>{post.title}</UTitle>
+                <UAuthor>작성자 : {post.userName}</UAuthor>
+                <UWriteDate>작성날짜 : {date}</UWriteDate>
               </>
             ) : (
               <Cover color={post.coverColor}>
@@ -147,6 +150,17 @@ const Author = styled.div`
   font-family: Inconsolas;
   color: white;
 `;
+const UAuthor = styled.div`
+  position: absolute;
+  z-index: 2;
+  margin-top: -8rem;
+  padding-left: 15rem;
+  width: 70%;
+  font-size: 1rem;
+  white-space: pre-line;
+  font-family: Inconsolas;
+  color: white;
+`;
 const DeleteBtn = styled.div`
   width: 3rem;
   height: 1.5rem;
@@ -171,7 +185,18 @@ const UpdateBtn = styled.div`
   text-align: center;
   margin: 1rem 0rem 1rem 1rem;
 `;
-
+const UTitle = styled.div`
+  z-index: 2;
+  margin-top: -13rem;
+  padding-left: 15rem;
+  width: 70%;
+  font-size: 3.5rem;
+  white-space: pre-line;
+  font-family: Inconsolas;
+  color: white;
+  position: absolute;
+  filter: brightness(100%) !important;
+`;
 const Title = styled.div`
   z-index: 2;
   padding-top: 15rem;
@@ -181,6 +206,7 @@ const Title = styled.div`
   white-space: pre-line;
   font-family: Inconsolas;
   color: white;
+  filter: brightness(100%) !important;
 `;
 const WriteDate = styled.div`
   z-index: 2;
@@ -191,11 +217,25 @@ const WriteDate = styled.div`
   font-family: Inconsolas;
   color: white;
 `;
-const Coverimg = styled.img`
+const UWriteDate = styled.div`
+  position: absolute;
   z-index: 2;
+  margin-top: -6.5rem;
+  padding-left: 15rem;
+  width: 70%;
+  font-size: 1rem;
+  white-space: pre-line;
+  font-family: Inconsolas;
+  color: white;
+`;
+const Coverimg = styled.div`
+  background-color: ${props => props.color};
+  background-image: url(${props => props.image});
+  z-index: 1;
   height: 28rem;
   width: 100%;
   position: relative;
+  filter: brightness(50%);
 `;
 
 const Cover = styled.div`
