@@ -33,7 +33,7 @@ class PortfolioPage extends Component {
         </Link>
         <About greeting={greeting}></About>
         <Skills isCurrentUser={isCurrentUser}></Skills>
-        <Project isCurrentUser={isCurrentUser}></Project>
+        <Project userid={id} isCurrentUser={isCurrentUser}></Project>
         <Contact email={email} repository={repository}></Contact>
       </PortfolioLayout>
     );

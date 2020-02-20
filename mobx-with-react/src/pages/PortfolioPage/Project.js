@@ -6,7 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "react-loader-spinner";
 import ProjectList from "./ProjectList";
 import { EditP } from "../../styles/iconStyle.js";
-import jwtDecode from "jwt-decode";
 
 @inject("postStore")
 @observer
@@ -18,9 +17,8 @@ class Project extends Component {
   componentDidMount() {
     const { postStore } = this.props;
 
-    postStore.loadPosts(
-      jwtDecode(window.sessionStorage.getItem("jwt")).sub * 1
-    );
+
+    postStore.loadPosts(this.props.userid);
   }
 
   render() {
